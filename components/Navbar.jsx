@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Navbar.module.css';
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
-
+    const quantity = useSelector(state => state.cart.quantity);
 
     return (
         <>
@@ -22,21 +24,38 @@ const Navbar = () => {
                 <div className={styles.item}>
 
                     <ul className={styles.list}>
-                        <li className={styles.listItem}><a href="">Homepage</a> </li>
-                        <li className={styles.listItem}><a href="">Products</a></li>
+
+
+                        <Link href="/" passHref>
+                            <li className={styles.listItem}><a href="">Homepage</a> </li>
+                        </Link>
+
+                        {/* <li className={styles.listItem}><Link
+                            activeClass="nav-active"
+                            className="nav"
+                            to={"menu"}
+                            spy={true}
+                            smooth={true}
+                            duration={500}
+                            offset={-50} 
+                        >Menu</Link></li> */}
                         <li className={styles.listItem}><a href="">Menu</a></li>
+
                         <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" />
                         <li className={styles.listItem}><a href="">Events</a></li>
                         <li className={styles.listItem}><a href="">Blog</a></li>
                         <li className={styles.listItem}><a href="">Contact</a></li>
                     </ul>
                 </div>
-                <div className={styles.item}>
-                    <div className={styles.cart}>
-                        <Image src="/img/cart.png" alt="cart" width="30px" height="30px" />
-                        <div className={styles.counter}>2</div>
+                <Link href="/cart" passHref>
+                    <div className={styles.item}>
+                        <div className={styles.cart}>
+                            <Image src="/img/cart.png" alt="cart" width="30px" height="30px" />
+                            <div className={styles.counter}>{quantity}</div>
+                        </div>
                     </div>
-                </div>
+                </Link>
+
                 <button className={styles.hamburger} onClick={() => {
                     setIsNavExpanded(!isNavExpanded)
                 }}>

@@ -1,10 +1,10 @@
-
 import styles from "../styles/PizzaList.module.css";
-import PizzaCard from "./PizzaCard"
+import PizzaCard from "./PizzaCard";
 
-const PizzaList = () => {
+const PizzaList = ({ pizzaList }) => {
+
     return (
-        <div className={styles.container}>
+        <div className={styles.container} id="menu">
             <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
             <p className={styles.desc}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu
@@ -12,14 +12,9 @@ const PizzaList = () => {
                 sit amet, consectetur adipiscing elit.
       </p>
             <div className={styles.wrapper}>
-                <PizzaCard />
-                <PizzaCard />
-                <PizzaCard />
-                <PizzaCard />
-                <PizzaCard />
-                <PizzaCard />
-                <PizzaCard />
-                <PizzaCard />
+                {pizzaList.map((pizza) => (
+                    <PizzaCard key={pizza.id} pizza={pizza} />
+                ))}
             </div>
         </div>
     );
