@@ -47,7 +47,7 @@ const Navbar = () => {
                         <li className={styles.listItem}><a href="">Contact</a></li>
                     </ul>
                 </div>
-                <Link href="/cart" passHref>
+                <Link href="/Cart" passHref>
                     <div className={styles.item}>
                         <div className={styles.cart}>
                             <Image src="/img/cart.png" alt="cart" width="30px" height="30px" />

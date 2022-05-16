@@ -85,13 +85,13 @@ const Cart = () => {
                 <div className={styles.wrapper}>
                     <h2 className={styles.title}>CART TOTAL</h2>
                     <div className={styles.totalText}>
-                        <b className={styles.totalTextTitle}>Subtotal:</b>{cart.total}&euro;
+                        <b className={styles.totalTextTitle}>Subtotal:</b>{cartList.total}&euro;
                     </div>
                     <div className={styles.totalText}>
                         <b className={styles.totalTextTitle}>Discount:</b>0.00&euro;
                     </div>
                     <div className={styles.totalText}>
-                        <b className={styles.totalTextTitle}>Total:</b>{cart.total}&euro;
+                        <b className={styles.totalTextTitle}>Total:</b>{cartList.total}&euro;
                     </div>
                     <button className={styles.button} onClick={e => handleCompleteOrder(e)}>CHECKOUT NOW!</button>
                 </div>
