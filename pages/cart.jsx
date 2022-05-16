@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Cart.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
@@ -13,15 +12,15 @@ const addNewOrder = order => {
     return axios.post(`https://624b52c271e21eebbcf0b4ba.mockapi.io/orders`, data);
 };
 
-const cart = () => {
+const Cart = () => {
     const router = useRouter()
-    const cart = useSelector(state => state.cart);
+    const cartList = useSelector(state => state.cart);
     const [orderId, setOrderId] = useState(0)
     const handleCompleteOrder = (e) => {
         const createdAt = {
             createdAt: new Date().toLocaleString()
         };
-        const finalCart = { ...cart, ...createdAt };
+        const finalCart = { ...cartList, ...createdAt };
 
         addNewOrder(finalCart).then(res => {
             setOrderId(res.data.id);
@@ -46,7 +45,7 @@ const cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {cart.products.map(product => (
+                        {cartList.products.map(product => (
                             <tr className={styles.tr} key={product.id}>
                                 <td>
                                     <div className={styles.imgContainer}>
@@ -94,14 +93,11 @@ const cart = () => {
                     <div className={styles.totalText}>
                         <b className={styles.totalTextTitle}>Total:</b>{cart.total}&euro;
                     </div>
-                    {/* <Link href={`/checkout/${orderId}`}> */}
                     <button className={styles.button} onClick={e => handleCompleteOrder(e)}>CHECKOUT NOW!</button>
-                    {/* </Link> */}
-
                 </div>
             </div>
         </div>
     )
 }
 
-export default cart;
+export default Cart;
