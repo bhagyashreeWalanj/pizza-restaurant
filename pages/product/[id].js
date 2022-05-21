@@ -62,19 +62,19 @@ const Product = ({ pizza }) => {
                 <h3 className={styles.choose}>Choose the size</h3>
                 <div className={styles.sizes}>
                     <div className={styles.size} onClick={() => handleSize(0)}>
-                        <Image src="/img/size.png" layout="fill" alt="" />
+                        <Image src={((size === 0) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
                         <span className={classNames([
                             (size === 0) ? [styles.pizzaSizeColor] : [styles.number]
                         ])}>Small</span>
                     </div>
                     <div className={styles.size} onClick={() => handleSize(1)}>
-                        <Image src="/img/size.png" layout="fill" alt="" />
+                        <Image src={((size === 1) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
                         <span className={classNames([
                             (size === 1) ? [styles.pizzaSizeColor] : [styles.number]
                         ])}>Medium</span>
                     </div>
                     <div className={styles.size} onClick={() => handleSize(2)}>
-                        <Image src="/img/size.png" layout="fill" alt="" />
+                        <Image src={((size === 2) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
                         <span className={classNames([
                             (size === 2) ? [styles.pizzaSizeColor] : [styles.number]
                         ])}>Large</span>
