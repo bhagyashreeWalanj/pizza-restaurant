@@ -37,7 +37,7 @@ const Cart = () => {
                 <div className={styles.emptyCartContainer}>
                     <Image src="/img/emptyCart.png" layout="fill" className={styles.emptyCart} alt="emptycart" />
                     <h2>Your Cart is <strong>EMPTY</strong> </h2>
-                    <p className={styles.emptyCartPara}>Looks like you haven't made your choice yet...</p>
+                    <p className={styles.emptyCartPara}>Looks like you haven&apos;t made your choice yet...</p>
                     <Link href="/" passHref>
                         <button className={styles.button}>Back To Home</button>
                     </Link>
