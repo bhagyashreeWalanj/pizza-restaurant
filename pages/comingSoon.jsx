@@ -1,5 +1,6 @@
 import styles from '../styles/contact.module.scss'
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const ComingSoon = () => {
@@ -7,7 +8,10 @@ const ComingSoon = () => {
         <div>
             <div className={styles.thankYouContainer}>
                 <h1>Coming Soon!</h1>
-                <img src="img/comingSoon.png" className={styles.emptyCart} style={{ 'width': '15rem' }} alt="comingSoon" />
+                <Image src="/img/comingSoon.png" layout="fixed"
+                    className={styles.emptyCart}
+                    width="200" height="200"
+                    alt="comingSoon" />
                 <Link href="/" passHref>
                     <button className={styles.button}
                         style={{ 'marginBottom': '10rem', 'marginTop': '3rem' }}

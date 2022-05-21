@@ -101,6 +101,7 @@
         border:none;
         border-radius: 1rem;
         font-weight: 500;
+        font-size: medium;
         cursor: pointer;
 
        
@@ -109,6 +110,9 @@
         color: yellowgreen;
         height: 60px;
         width: 60px;
+      }
+      .emptyCart{
+        opacity: 0.5;
       }
 }
 

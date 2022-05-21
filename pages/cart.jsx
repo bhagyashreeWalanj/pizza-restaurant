@@ -35,7 +35,7 @@ const Cart = () => {
         <div className={styles.container}>
             {(cartList.products.length === 0) ? (
                 <div className={styles.emptyCartContainer}>
-                    <img src="img/emptyCart.png" className={styles.emptyCart} alt="emptycart" />
+                    <Image src="/img/emptyCart.png" layout="fill" className={styles.emptyCart} alt="emptycart" />
                     <h2>Your Cart is <strong>EMPTY</strong> </h2>
                     <p className={styles.emptyCartPara}>Looks like you haven't made your choice yet...</p>
                     <Link href="/" passHref>

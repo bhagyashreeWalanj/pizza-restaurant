@@ -6,7 +6,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import { emptyCart } from '../../redux/cartSlice';
 
-const checkout = ({ cart }) => {
+const Checkout = ({ cart }) => {
     const status = 0;
     const dispatch = useDispatch();
 
@@ -218,4 +218,4 @@ export const getServerSideProps = async ({ params }) => {
 
 };
 
-export default checkout
+export default Checkout
