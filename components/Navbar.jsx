@@ -44,7 +44,9 @@ const Navbar = () => {
                         <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" />
                         <li className={styles.listItem}><a href="">Events</a></li>
                         <li className={styles.listItem}><a href="">Blog</a></li>
-                        <li className={styles.listItem}><a href="">Contact</a></li>
+                        <Link href="/contact" passHref>
+                            <li className={styles.listItem}><a href="">Contact</a></li>
+                        </Link>
                     </ul>
                 </div>
                 <Link href="/cart" passHref>
@@ -87,7 +89,7 @@ const Navbar = () => {
                     {/* <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" /> */}
                     <li className={styles.listItemExpand}><a href="">Events</a></li>
                     <li className={styles.listItemExpand}><a href="">Blog</a></li>
-                    <li className={styles.listItemExpand}><a href="">Contact</a></li>
+                    <Link href="/contact" passHref><li className={styles.listItemExpand}><a href="">Contact</a></li></Link>
                 </ul>
             </div>
         </>
