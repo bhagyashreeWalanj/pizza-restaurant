@@ -39,11 +39,14 @@ const Navbar = () => {
                             duration={500}
                             offset={-50} 
                         >Menu</Link></li> */}
-                        <li className={styles.listItem}><a href="">Menu</a></li>
-
+                        <Link href="/comingSoon" passHref>
+                            <li className={styles.listItem}><a href="">Menu</a></li>
+                        </Link>
                         <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" />
-                        <li className={styles.listItem}><a href="">Events</a></li>
-                        <li className={styles.listItem}><a href="">Blog</a></li>
+                        <Link href="/comingSoon" passHref>
+                            <li className={styles.listItem}><a href="">Events</a></li></Link>
+                        <Link href="/comingSoon" passHref>
+                            <li className={styles.listItem}><a href="">Blog</a></li></Link>
                         <Link href="/contact" passHref>
                             <li className={styles.listItem}><a href="">Contact</a></li>
                         </Link>
@@ -84,11 +87,15 @@ const Navbar = () => {
                 <ul className={isNavExpanded ? styles.listExpanded : styles.displayNone
                 }>
                     <Link href="/" passHref><li className={styles.listItemExpand}><a href="">Homepage</a> </li></Link>
-                    <li className={styles.listItemExpand}><a href="">Products</a></li>
-                    <li className={styles.listItemExpand}><a href="">Menu</a></li>
+                    <Link href="/comingSoon" passHref>
+                        <li className={styles.listItemExpand}><a href="">Products</a></li></Link>
+                    <Link href="/comingSoon" passHref>
+                        <li className={styles.listItemExpand}><a href="">Menu</a></li></Link>
                     {/* <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" /> */}
-                    <li className={styles.listItemExpand}><a href="">Events</a></li>
-                    <li className={styles.listItemExpand}><a href="">Blog</a></li>
+                    <Link href="/comingSoon" passHref>
+                        <li className={styles.listItemExpand}><a href="">Events</a></li></Link>
+                    <Link href="/comingSoon" passHref>
+                        <li className={styles.listItemExpand}><a href="">Blog</a></li></Link>
                     <Link href="/contact" passHref><li className={styles.listItemExpand}><a href="">Contact</a></li></Link>
                 </ul>
             </div>
