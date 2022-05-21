@@ -4,10 +4,12 @@ import axios from 'axios';
 import styles from '../../styles/Product.module.css';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/cartSlice';
+import classNames from 'classnames'
 
 
 const Product = ({ pizza }) => {
     const [size, setSize] = useState(0);
+    const [sizeColor, setSizeColor] = useState(false);
     const [price, setPrice] = useState(pizza.prices[0]);
     const [quantity, setQuantity] = useState(1)
     const [extras, setExtras] = useState([]);
@@ -61,15 +63,21 @@ const Product = ({ pizza }) => {
                 <div className={styles.sizes}>
                     <div className={styles.size} onClick={() => handleSize(0)}>
                         <Image src="/img/size.png" layout="fill" alt="" />
-                        <span className={styles.number}>Small</span>
+                        <span className={classNames([
+                            (size === 0) ? [styles.pizzaSizeColor] : [styles.number]
+                        ])}>Small</span>
                     </div>
                     <div className={styles.size} onClick={() => handleSize(1)}>
                         <Image src="/img/size.png" layout="fill" alt="" />
-                        <span className={styles.number}>Medium</span>
+                        <span className={classNames([
+                            (size === 1) ? [styles.pizzaSizeColor] : [styles.number]
+                        ])}>Medium</span>
                     </div>
                     <div className={styles.size} onClick={() => handleSize(2)}>
                         <Image src="/img/size.png" layout="fill" alt="" />
-                        <span className={styles.number}>Large</span>
+                        <span className={classNames([
+                            (size === 2) ? [styles.pizzaSizeColor] : [styles.number]
+                        ])}>Large</span>
                     </div>
                 </div>
                 <h3 className={styles.choose}>Choose the additional ingredients</h3>
@@ -129,6 +137,7 @@ const Product = ({ pizza }) => {
 
 }
 export const getServerSideProps = async ({ params }) => {
+
     let errorCode = false;
     try {
         const res = await axios.get(`https://624b52c271e21eebbcf0b4ba.mockapi.io/pizzas/${params.id}`)

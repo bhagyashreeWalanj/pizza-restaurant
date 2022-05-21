@@ -15,6 +15,10 @@ const addNewOrder = order => {
 const Cart = () => {
     const router = useRouter()
     const cartList = useSelector(state => state.cart);
+    const products = useSelector(state => state)
+    console.log("cart list :", cartList);
+    console.log("state", products)
+
     const [orderId, setOrderId] = useState(0)
     const handleCompleteOrder = (e) => {
         const createdAt = {

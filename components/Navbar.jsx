@@ -81,7 +81,7 @@ const Navbar = () => {
 
                 <ul className={isNavExpanded ? styles.listExpanded : styles.displayNone
                 }>
-                    <li className={styles.listItemExpand}><a href="">Homepage</a> </li>
+                    <Link href="/" passHref><li className={styles.listItemExpand}><a href="">Homepage</a> </li></Link>
                     <li className={styles.listItemExpand}><a href="">Products</a></li>
                     <li className={styles.listItemExpand}><a href="">Menu</a></li>
                     {/* <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" /> */}
