@@ -1,15 +1,24 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/checkout.module.css';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import Image from 'next/image';
 import axios from 'axios';
+import { emptyCart } from '../../redux/cartSlice';
 
 const checkout = ({ cart }) => {
     const status = 0;
+    const dispatch = useDispatch();
+
     const statusClass = (index) => {
         if (index - status < 1) return styles.done;
         if (index - status === 1) return styles.inProgress;
         if (index - status > 1) return styles.undone;
     }
+
+    useEffect(() => {
+        dispatch(emptyCart())
+    })
 
     return (
         <div>

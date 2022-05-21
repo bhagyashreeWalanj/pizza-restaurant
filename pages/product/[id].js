@@ -9,7 +9,6 @@ import classNames from 'classnames'
 
 const Product = ({ pizza }) => {
     const [size, setSize] = useState(0);
-    const [sizeColor, setSizeColor] = useState(false);
     const [price, setPrice] = useState(pizza.prices[0]);
     const [quantity, setQuantity] = useState(1)
     const [extras, setExtras] = useState([]);
