@@ -3,6 +3,7 @@ import axios from 'axios'
 import Featured from '../components/Featured'
 import PizzaList from '../components/PizzaList'
 import styles from '../styles/Home.module.css'
+import 'react-notifications/lib/notifications.css';
 
 export default function Home({ pizzaList }) {
   // const pizzaList = [

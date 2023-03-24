@@ -2,6 +2,7 @@ import styles from "../styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard";
 
 const PizzaList = ({ pizzaList }) => {
+    console.log("piza lisg >", pizzaList)
 
     return (
         <div className={styles.container} id="menu">
@@ -12,9 +13,12 @@ const PizzaList = ({ pizzaList }) => {
                 sit amet, consectetur adipiscing elit.
       </p>
             <div className={styles.wrapper}>
-                {pizzaList.map((pizza) => (
-                    <PizzaCard key={pizza.id} pizza={pizza} />
-                ))}
+                {pizzaList.map((pizza) => {
+                    if (pizza.category === "pizza") {
+                        return (<PizzaCard key={pizza.id} pizza={pizza} />)
+                    }
+
+                })}
             </div>
         </div>
     );

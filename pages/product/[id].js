@@ -5,6 +5,8 @@ import styles from '../../styles/Product.module.css';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/cartSlice';
 import classNames from 'classnames'
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 
 const Product = ({ pizza }) => {
@@ -16,6 +18,8 @@ const Product = ({ pizza }) => {
 
     const handleClick = () => {
         dispatch(addProduct({ ...pizza, extras, price, quantity }));
+        NotificationManager.success(`${pizza.name} is been added in cart`, 'Added in Cart');
+
     }
     // pizza = {
     //     id: 1,
@@ -48,55 +52,62 @@ const Product = ({ pizza }) => {
 
 
     return (
-        <div className={styles.container}>
-            <div className={styles.left}>
-                <div className={styles.imgContainer}>
-                    <Image src={pizza.img} objectFit="contain" layout="fill" alt="" />
-                </div>
-            </div>
-            <div className={styles.right} >
-                <h1 className={styles.title}>{pizza.name}</h1>
-                <span className={styles.price}>{price} &euro;</span>
-                <p className={styles.desc}>{pizza.desc}</p>
-                <h3 className={styles.choose}>Choose the size</h3>
-                <div className={styles.sizes}>
-                    <div className={styles.size} onClick={() => handleSize(0)}>
-                        <Image src={((size === 0) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
-                        <span className={classNames([
-                            (size === 0) ? [styles.pizzaSizeColor] : [styles.number]
-                        ])}>Small</span>
-                    </div>
-                    <div className={styles.size} onClick={() => handleSize(1)}>
-                        <Image src={((size === 1) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
-                        <span className={classNames([
-                            (size === 1) ? [styles.pizzaSizeColor] : [styles.number]
-                        ])}>Medium</span>
-                    </div>
-                    <div className={styles.size} onClick={() => handleSize(2)}>
-                        <Image src={((size === 2) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
-                        <span className={classNames([
-                            (size === 2) ? [styles.pizzaSizeColor] : [styles.number]
-                        ])}>Large</span>
-                    </div>
-                </div>
-                <h3 className={styles.choose}>Choose the additional ingredients</h3>
-                <div className={styles.ingredients}>
-                    {pizza.extraOptions.map((option) => {
-                        return (
-                            <div className={styles.option} key={option.id}>
-                                <input
-                                    type="checkbox"
-                                    id={option.text}
-                                    name={option.text}
-                                    className={styles.checkbox}
-                                    onChange={(e) => handleExtraIngredientChange(e, option)}
-                                />
-                                <label htmlFor="double">{option.text}</label>
-                            </div>
-                        )
-                    })}
+        <>
+            <NotificationContainer />
+            <div className={styles.container}>
+                <NotificationContainer />
 
-                    {/* <div className={styles.option}>
+                <div className={styles.left}>
+                    <div className={styles.imgContainer}>
+                        <Image src={pizza.img} objectFit="contain" layout="fill" alt="" />
+                    </div>
+                </div>
+                <div className={styles.right} >
+                    <h1 className={styles.title}>{pizza.name}</h1>
+                    <span className={styles.price}>{price} &euro;</span>
+                    <p className={styles.desc}>{pizza.desc}</p>
+                    {(pizza.category === "pizza") ?
+                        <>
+                            <h3 className={styles.choose}>Choose the size</h3>
+                            <div className={styles.sizes}>
+                                <div className={styles.size} onClick={() => handleSize(0)}>
+                                    <Image src={((size === 0) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
+                                    <span className={classNames([
+                                        (size === 0) ? [styles.pizzaSizeColor] : [styles.number]
+                                    ])}>Small</span>
+                                </div>
+                                <div className={styles.size} onClick={() => handleSize(1)}>
+                                    <Image src={((size === 1) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
+                                    <span className={classNames([
+                                        (size === 1) ? [styles.pizzaSizeColor] : [styles.number]
+                                    ])}>Medium</span>
+                                </div>
+                                <div className={styles.size} onClick={() => handleSize(2)}>
+                                    <Image src={((size === 2) ? '/img/pizzaSize.png' : '/img/size.png')} layout="fill" alt="" />
+                                    <span className={classNames([
+                                        (size === 2) ? [styles.pizzaSizeColor] : [styles.number]
+                                    ])}>Large</span>
+                                </div>
+                            </div>
+                        </> : ""}
+                    <h3 className={styles.choose}>Choose the additional ingredients</h3>
+                    <div className={styles.ingredients}>
+                        {pizza.extraOptions.map((option) => {
+                            return (
+                                <div className={styles.option} key={option.id}>
+                                    <input
+                                        type="checkbox"
+                                        id={option.text}
+                                        name={option.text}
+                                        className={styles.checkbox}
+                                        onChange={(e) => handleExtraIngredientChange(e, option)}
+                                    />
+                                    <label htmlFor="double">{option.text}</label>
+                                </div>
+                            )
+                        })}
+
+                        {/* <div className={styles.option}>
                         <input
                             className={styles.checkbox}
                             type="checkbox"
@@ -123,14 +134,15 @@ const Product = ({ pizza }) => {
                         />
                         <label htmlFor="garlic">Garlic Sauce</label>
                     </div> */}
-                </div>
-                <div className={styles.add}>
-                    <input onChange={(e) => setQuantity(e.target.value)} type="number" defaultValue={quantity} className={styles.quantity} />
-                    <button className={styles.button}
-                        onClick={handleClick}>Add to Cart</button>
+                    </div>
+                    <div className={styles.add}>
+                        <input onChange={(e) => setQuantity(e.target.value)} type="number" defaultValue={quantity} className={styles.quantity} />
+                        <button className={styles.button}
+                            onClick={handleClick}>Add to Cart</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 
 

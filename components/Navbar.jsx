@@ -39,7 +39,7 @@ const Navbar = () => {
                             duration={500}
                             offset={-50} 
                         >Menu</Link></li> */}
-                        <Link href="/comingSoon" passHref>
+                        <Link href="/Menus" passHref>
                             <li className={styles.listItem}><a href="">Menu</a></li>
                         </Link>
                         <Image src="/img/logo.png" alt="pizzaRestaurantLogo" width="160px" height="69px" />
